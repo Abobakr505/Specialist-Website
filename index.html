@@ -478,7 +478,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -511,7 +516,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -544,7 +554,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -577,7 +592,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -610,7 +630,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -643,7 +668,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -676,7 +706,12 @@ body.mobile-menu-active {
                                group-hover:text-[#D4AF37]
                                group-hover:translate-x-1 transition-all"
                     >
-                        ↗
+                            <svg class="w-5 h-5 shrink-0 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                       
                     </span>
                 </a>
 
@@ -1640,56 +1675,73 @@ body.mobile-menu-active {
             });
         });
 
-        // 3. قائمة الهاتف المحمول (Mobile menu)
-// 3. قائمة الهاتف المحمول (Premium Mobile Menu)
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
+        // 3. قائمة الهاتف المحمول (Premium Mobile Menu)
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
 
-function openMobileMenu() {
-    mobileMenu.classList.remove('hidden');
+    function openMobileMenu() {
+        if (!mobileMenu) return;
 
-    // force reflow
-    mobileMenu.offsetHeight;
+        mobileMenu.classList.remove('hidden');
 
-    mobileMenu.classList.add('mobile-menu-open');
-    menuToggle.classList.add('open');
+        // Force reflow to make the opening animation work
+        void mobileMenu.offsetHeight;
 
-    document.body.classList.add('mobile-menu-active');
-}
+        mobileMenu.classList.add('mobile-menu-open');
+        menuToggle.classList.add('open');
 
-function closeMobileMenu() {
-    mobileMenu.classList.remove('mobile-menu-open');
-    menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-label', 'Close menu');
+        document.body.classList.add('mobile-menu-active');
+    }
 
-    document.body.classList.remove('mobile-menu-active');
+    function closeMobileMenu() {
+        if (!mobileMenu) return;
 
-    setTimeout(() => {
-        if (!mobileMenu.classList.contains('mobile-menu-open')) {
-            mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('mobile-menu-open');
+        menuToggle.classList.remove('open');
+
+        menuToggle.setAttribute('aria-label', 'Open menu');
+        document.body.classList.remove('mobile-menu-active');
+
+        // Wait for closing animation
+        setTimeout(() => {
+            if (!mobileMenu.classList.contains('mobile-menu-open')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }, 650);
+    }
+
+    // فتح / غلق القائمة من زر الهامبرجر
+    menuToggle.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('mobile-menu-open')) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
         }
-    }, 600);
-}
+    });
 
-menuToggle.addEventListener('click', () => {
-    if (mobileMenu.classList.contains('mobile-menu-open')) {
+    // ⭐ زر X - غلق القائمة
+    mobileMenuClose.addEventListener('click', () => {
         closeMobileMenu();
-    } else {
-        openMobileMenu();
-    }
-});
+    });
 
-// إغلاق عند الضغط على أي لينك
-document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
-});
+    // إغلاق عند الضغط على أي لينك داخل القائمة
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
 
-// إغلاق بزر Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' &&
-        mobileMenu.classList.contains('mobile-menu-open')) {
-        closeMobileMenu();
-    }
-});
+    // إغلاق عند الضغط على Escape
+    document.addEventListener('keydown', (e) => {
+        if (
+            e.key === 'Escape' &&
+            mobileMenu.classList.contains('mobile-menu-open')
+        ) {
+            closeMobileMenu();
+        }
+    });
         // 4. أنيميشن الظهور عند التمرير (Scroll reveal)
         const revealEls = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
