@@ -158,6 +158,7 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
 <!-- ================================
      PERSON STRUCTURED DATA
 ================================= -->
@@ -1414,7 +1415,7 @@ body.mobile-menu-active {
         >
             <a
                 href="#contact"
-                class="mobile-link mobile-menu-item flex items-center
+                class="mobile-link  mobile-menu-item flex items-center
                        justify-between w-full px-6 py-4 rounded-2xl
                        bg-stone-900 dark:bg-[#D4AF37]
                        text-white dark:text-stone-900
@@ -1457,10 +1458,10 @@ body.mobile-menu-active {
                 </p>
                 <div class="opacity-0 animate-fade-up flex flex-wrap gap-4" style="animation-delay: 400ms;">
                     <a href="#work"
-                        class="px-8 py-4 bg-stone-900 dark:bg-[#D4AF37] text-white dark:text-stone-900 text-sm font-semibold rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-stone-900/20">View
+                        class="magnetic-btn px-8 py-4 bg-stone-900 dark:bg-[#D4AF37] text-white dark:text-stone-900 text-sm font-semibold rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-stone-900/20">View
                         Experience</a>
                     <a href="#contact"
-                        class="px-8 py-4 bg-transparent border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-white text-sm font-semibold rounded-full hover:scale-105 active:scale-95 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all">Let's
+                        class="magnetic-btn px-8 py-4 bg-transparent border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-white text-sm font-semibold rounded-full hover:scale-105 active:scale-95 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all">Let's
                         Talk</a>
                 </div>
             </div>
@@ -1516,7 +1517,7 @@ body.mobile-menu-active {
                         </div>
                         <div
                             class="absolute -bottom-6 -right-6 sm:-right-10 bg-white dark:bg-stone-900 rounded-2xl shadow-xl border border-stone-100 dark:border-stone-800 px-5 py-4 text-center animate-float-slow">
-                            <p class="text-2xl font-bold text-[#D4AF37] font-serif">4+</p>
+                            <p class="text-2xl font-bold text-[#D4AF37] font-serif" data-count="4" data-suffix="+">0+</p>
                             <p class="text-[10px] uppercase tracking-widest text-stone-500 dark:text-stone-400">Years in
                                 Field</p>
                         </div>
@@ -1525,7 +1526,7 @@ body.mobile-menu-active {
                     <div class="grid grid-cols-2 gap-4 w-full max-w-sm mt-14 lg:mt-16">
                         <div
                             class="lift-hover bg-white/70 dark:bg-stone-900/40 backdrop-blur-sm p-5 rounded-2xl border border-stone-100 dark:border-stone-800 shadow-sm hover:border-[#D4AF37]/30 hover:-translate-y-1">
-                            <p class="text-xl font-bold text-stone-900 dark:text-white font-serif">2</p>
+                            <p class="text-xl font-bold text-stone-900 dark:text-white font-serif" data-count="2">0</p>
                             <p class="text-[10px] uppercase tracking-widest text-stone-500 dark:text-stone-400 mt-1">Global
                                 Portfolios</p>
                         </div>
@@ -1599,11 +1600,9 @@ body.mobile-menu-active {
                     style="animation-delay: 0ms;">
                     <div
                         class="mb-8 w-12 h-12 text-stone-400 group-hover:text-[#D4AF37] group-hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.5)] group-hover:scale-110 transition-all duration-500">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="w-full h-full">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0010 11V5a2 2 0 10-4 0v6c0 1.673-.325 3.27-.916 4.73l-1.028 2.571m11.397-1.2l.064.12A10.003 10.003 0 0114 11V5a2 2 0 10-4 0v6c0 1.673.325 3.27.916 4.73l1.028 2.571m1.302-6.39l3-3m0 0l3 3m-3-3v12">
-                            </path>
-                        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.6427 21h14M16.2928 9c.8398.95515 1.3499 2.213 1.3499 3.5912 0 2.9872-2.3962 5.4088-5.3521 5.4088-1.9895 0-3.72545-1.097-4.6479-2.7251m-2-.2749h6m.4369-4.4369L10.6427 12m5.8092-5.76698 2.1554-2.15534M17.5296 3l2.1553 2.15534M10.6427 18v3m4-3v3m.7315-15.84464-4.3107 4.31068 2.1554 2.15536 4.3107-4.3107-2.1554-2.15534Z"/>
+</svg>
                     </div>
                     <h4 class="text-2xl font-semibold text-stone-900 dark:text-stone-100 mb-6 font-serif">Field Application
                         Support</h4>
@@ -2597,6 +2596,71 @@ window.addEventListener('load', () => {
                 nav.classList.remove('shadow-md');
             }
         });
+        // Animated Counter for stat numbers
+function animateCounter(el, target, suffix = '') {
+    let current = 0;
+    const duration = 1500;
+    const stepTime = 16;
+    const steps = duration / stepTime;
+    const increment = target / steps;
+
+    const counter = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(counter);
+        }
+        el.textContent = Math.floor(current) + suffix;
+    }, stepTime);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count);
+            const suffix = el.dataset.suffix || '';
+            animateCounter(el, target, suffix);
+            counterObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+const heroSection = document.querySelector('section.min-h-screen');
+if (heroSection && window.matchMedia('(pointer: fine)').matches) {
+    const glow = document.createElement('div');
+    glow.style.cssText = `
+        position: absolute; width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+        border-radius: 50%; pointer-events: none; z-index: 0;
+        transform: translate(-50%, -50%); transition: opacity 0.3s ease; opacity: 0;
+    `;
+    heroSection.style.position = 'relative';
+    heroSection.appendChild(glow);
+
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        glow.style.left = (e.clientX - rect.left) + 'px';
+        glow.style.top = (e.clientY - rect.top) + 'px';
+        glow.style.opacity = '1';
+    });
+    heroSection.addEventListener('mouseleave', () => glow.style.opacity = '0');
+}
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+    btn.addEventListener('mousedown', () => btn.style.transition = 'none');
+});
+
     </script>
 </body>
 
