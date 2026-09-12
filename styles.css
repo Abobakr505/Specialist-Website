@@ -645,13 +645,13 @@ body.mobile-menu-active {
 .dark .marquee-logo:hover .marquee-logo-box img {
     filter: grayscale(0%) brightness(1) invert(0);
 }
-
+/* 
 @media (max-width: 767px) {
     .marquee-logo-box {
         width: 84px;
         height: 46px;
     }
-}
+} */
 @keyframes marqueeScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -661,9 +661,7 @@ body.mobile-menu-active {
     .marquee-track {
         animation-duration: 16s;
     }
-    .marquee-logo img {
-        height: 32px;
-    }
+
     .marquee-logo {
         padding: 0 1.75rem;
     }
